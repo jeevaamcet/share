@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div th:if = "${choice == 1}"class="display">
+        <div th:each="l : ${hp}">
+            <p th:text="${l.key}"></p>
+            <p th:text="${l.value}"></p>
+        </div>
+    </div>
+
+    <div class="edit"th:if = "${choice == 2}">
+        <div class="key" th:if="${key == 1}">
+            <form action="edit" method="get">
+                <label for="">Enter the name</label>
+                <input type="text" name="name" id="">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+        <div class="value"th:if="${key == 2}">
+            <form action="edit" method="post">
+                <label for="">Enter the new number</label>
+                <input type="text" name="name" id="">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+    </div>
+
+    <div class="delete"th:if = "${choice == 3}">
+        <form action="delete" method="post">
+            <label for="">Enter the name to delete</label>
+            <input type="text" name="name" id="">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+
+    <div class="create"th:if = "${choice == 4}">
+        <form action="create" method="post">
+            <label for="">Name</label>
+            <input type="text" name="name">
+            <label for="">Number</label>
+            <input type="text" name="number">
+            <input type="submit" id="">
+        </form>
+    </div>
+</body>
+</html>
